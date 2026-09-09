@@ -15,10 +15,7 @@ class NewsCell extends StatelessWidget {
         title: Text(news.title, maxLines: 2, overflow: TextOverflow.ellipsis),
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 6),
-          child: Text(
-            '${news.source} · ${news.tag ?? ''} · ${news.publishTime ?? ''}',
-            style: const TextStyle(fontSize: 12),
-          ),
+          child: Text('${news.source} · ${news.tag ?? ''} · ${news.publishTime ?? ''}', style: const TextStyle(fontSize: 12)),
         ),
         trailing: news.link != null ? const Icon(Icons.open_in_new, size: 16) : null,
         onTap: onTap,
