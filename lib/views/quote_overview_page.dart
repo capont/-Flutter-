@@ -10,8 +10,7 @@ class QuoteOverviewPage extends StatefulWidget {
   State<QuoteOverviewPage> createState() => _QuoteOverviewPageState();
 }
 
-class _QuoteOverviewPageState extends State<QuoteOverviewPage>
-    with AutomaticKeepAliveClientMixin {
+class _QuoteOverviewPageState extends State<QuoteOverviewPage> with AutomaticKeepAliveClientMixin {
   final QuoteViewModel _viewModel = QuoteViewModel();
   final RefreshController _refreshController = RefreshController();
 
@@ -21,23 +20,21 @@ class _QuoteOverviewPageState extends State<QuoteOverviewPage>
   @override
   void initState() {
     super.initState();
-    _viewModel.addListener(_onViewModelChanged);
+    _viewModel.addListener(_onChanged);
     _viewModel.startPolling();
   }
 
   @override
   void dispose() {
-    _viewModel.removeListener(_onViewModelChanged);
+    _viewModel.removeListener(_onChanged);
     _viewModel.dispose();
     _refreshController.dispose();
     super.dispose();
   }
 
-  void _onViewModelChanged() {
+  void _onChanged() {
     setState(() {});
-    if (_refreshController.isRefresh) {
-      _refreshController.refreshCompleted();
-    }
+    if (_refreshController.isRefresh) _refreshController.refreshCompleted();
   }
 
   @override
