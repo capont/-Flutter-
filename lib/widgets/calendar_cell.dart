@@ -17,10 +17,10 @@ class CalendarCell extends StatelessWidget {
           children: [
             Text(event.title, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
             const SizedBox(height: 4),
-            Text('${event.date} ${event.time}',
-                style: const TextStyle(fontSize: 12, color: Colors.grey)),
+            Text('${event.date} ${event.time}', style: const TextStyle(fontSize: 12, color: Colors.grey)),
             const SizedBox(height: 6),
-            Row(
+            Wrap(
+              spacing: 8,
               children: [
                 if (event.actual != null) _buildTag('实际', event.actual!),
                 if (event.forecast != null) _buildTag('预测', event.forecast!),
@@ -35,12 +35,8 @@ class CalendarCell extends StatelessWidget {
 
   Widget _buildTag(String label, String value) {
     return Container(
-      margin: const EdgeInsets.only(right: 8),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-      decoration: BoxDecoration(
-        color: Colors.blue.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(4),
-      ),
+      decoration: BoxDecoration(color: Colors.blue.withOpacity(0.1), borderRadius: BorderRadius.circular(4)),
       child: Text('$label: $value', style: const TextStyle(fontSize: 12)),
     );
   }
