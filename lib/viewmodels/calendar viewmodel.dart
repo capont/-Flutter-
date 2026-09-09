@@ -15,7 +15,6 @@ class CalendarViewModel extends ChangeNotifier {
   Future<void> fetchCalendar() async {
     _loading = true;
     notifyListeners();
-
     try {
       final response = await http.get(Uri.parse(_url)).timeout(const Duration(seconds: 10));
       if (response.statusCode == 200) {
@@ -25,7 +24,6 @@ class CalendarViewModel extends ChangeNotifier {
     } catch (e) {
       // ignore
     }
-
     _loading = false;
     notifyListeners();
   }
