@@ -14,11 +14,7 @@ class MarketQuoteApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '行情监控台',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.light,
-        useMaterial3: true,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
       darkTheme: ThemeData(brightness: Brightness.dark, useMaterial3: true),
       themeMode: ThemeMode.system,
       home: const MainTabPage(),
@@ -45,26 +41,14 @@ class _MainTabPageState extends State<MainTabPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _pages,
-      ),
+      body: IndexedStack(index: _currentIndex, children: _pages),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (i) => setState(() => _currentIndex = i),
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.show_chart),
-            label: '行情',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: '财经日历',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.article),
-            label: '要闻',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.show_chart), label: '行情'),
+          BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: '财经日历'),
+          BottomNavigationBarItem(icon: Icon(Icons.article), label: '要闻'),
         ],
       ),
     );
