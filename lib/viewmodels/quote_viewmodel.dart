@@ -35,26 +35,22 @@ class QuoteViewModel extends ChangeNotifier {
   Future<void> fetchQuotes() async {
     _loading = true;
     notifyListeners();
-
     try {
       final response = await http.get(Uri.parse(_url)).timeout(const Duration(seconds: 5));
       if (response.statusCode == 200) {
         final Map<String, dynamic> json = jsonDecode(response.body);
         final List<QuoteModel> results = [];
-
         _symbolMap.forEach((symbol, name) {
           final data = json[symbol];
           if (data != null && data is Map<String, dynamic>) {
             results.add(QuoteModel.fromJson(data, symbol, name));
           }
         });
-
         _quotes = results;
       }
     } catch (e) {
-      // ignore network errors, keep previous data
+      // ignore
     }
-
     _loading = false;
     notifyListeners();
   }
