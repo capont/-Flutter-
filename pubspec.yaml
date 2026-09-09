@@ -1,5 +1,5 @@
 name: market_quote_app
-description: 贵金属/原油行情·资讯聚合监控台
+description: 贵金属原油行情资讯聚合监控台
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -10,8 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^1.1.0
-  intl: ^0.18.1
   pull_to_refresh: ^2.0.0
+  url_launcher: ^6.2.0
 
 dev_dependencies:
   flutter_test:
